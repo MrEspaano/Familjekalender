@@ -1,0 +1,11 @@
+node_modules/
+dist/
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+.DS_Store
+.env
+.env.local
+server/backups/
+.claude/

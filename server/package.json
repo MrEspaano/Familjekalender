@@ -1,0 +1,19 @@
+{
+  "name": "familjekalender-server",
+  "version": "1.0.0",
+  "description": "Backend API för Familjekalendern",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "backup": "node scripts/backup.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.21.0",
+    "zod": "^4.3.6"
+  }
+}
