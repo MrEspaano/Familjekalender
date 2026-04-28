@@ -18,31 +18,19 @@ export default defineConfig({
         theme_color: '#1E40AF',
         lang: 'sv',
         icons: [
-          {
-            src: '/icon-192.svg',
-            sizes: '192x192',
-            type: 'image/svg+xml',
-          },
-          {
-            src: '/icon-512.svg',
-            sizes: '512x512',
-            type: 'image/svg+xml',
-            purpose: 'any maskable',
-          },
+          { src: '/icon-192.svg', sizes: '192x192', type: 'image/svg+xml' },
+          { src: '/icon-512.svg', sizes: '512x512', type: 'image/svg+xml', purpose: 'any maskable' },
         ],
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,ico,woff,woff2}'],
         runtimeCaching: [
           {
-            urlPattern: /\/api\//,
+            urlPattern: /^https:\/\/.*\.supabase\.co\/.*/,
             handler: 'NetworkFirst',
             options: {
-              cacheName: 'api-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 7 * 24 * 60 * 60,
-              },
+              cacheName: 'supabase-cache',
+              expiration: { maxEntries: 50, maxAgeSeconds: 7 * 24 * 60 * 60 },
               networkTimeoutSeconds: 5,
             },
           },
@@ -52,8 +40,5 @@ export default defineConfig({
   ],
   server: {
     port: 5173,
-    proxy: {
-      '/api': 'http://localhost:4000',
-    },
   },
 });
