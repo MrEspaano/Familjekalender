@@ -34,3 +34,10 @@ export const MONTH_NAMES = [
 
 export const HOUR_START = 6;
 export const HOUR_END = 22;
+
+export const EVENT_TYPES = [
+  { id: 'event', label: 'Händelse', icon: '📅' },
+  { id: 'meal', label: 'Måltid', icon: '🍲' },
+  { id: 'chore', label: 'Syssla', icon: '🧹' },
+  { id: 'mood', label: 'Humör', icon: '✨' },
+];

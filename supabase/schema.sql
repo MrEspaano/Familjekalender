@@ -11,6 +11,8 @@ CREATE TABLE IF NOT EXISTS events (
   end_time      TIMESTAMPTZ,
   location      TEXT,
   notes         TEXT,
+  type          TEXT        NOT NULL DEFAULT 'event',
+  metadata      JSONB       NOT NULL DEFAULT '{}'::jsonb,
   recurrence    TEXT        CHECK (recurrence IN ('daily', 'weekly', 'monthly')),
   recurrence_end TIMESTAMPTZ,
   skipped_dates JSONB       NOT NULL DEFAULT '[]'::jsonb,
