@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { DAY_NAMES } from '../constants.js';
+import { DAY_NAMES, EVENT_TYPES } from '../constants.js';
 import { getMonthGrid, isSameDay, isSameMonth, formatTime } from '../utils/date.js';
 import { readableTextColor } from '../utils/colors.js';
 
@@ -61,16 +61,18 @@ export default function MonthView({
               <div className="space-y-0.5">
                 {list.slice(0, 3).map((e, idx) => {
                   const color = colors[e.person];
+                  const typeIcon = EVENT_TYPES.find(t => t.id === e.type)?.icon || '📅';
                   return (
                     <button
                       key={`${e.id}-${e.occurrence_date ?? idx}`}
                       onClick={(ev) => { ev.stopPropagation(); onEventClick(e); }}
-                      className="w-full text-left text-[11px] px-1.5 py-0.5 rounded truncate flex items-center gap-1"
+                      className="w-full text-left text-[10px] px-1.5 py-0.5 rounded-md truncate flex items-center gap-1 shadow-sm hover:brightness-110 transition-all"
                       style={{ backgroundColor: color, color: readableTextColor(color) }}
                       title={`${e.title} ${formatTime(new Date(e.start_time))}`}
                     >
-                      {e.is_recurring && <span className="flex-shrink-0 opacity-80">↻</span>}
-                      <span className="truncate">{formatTime(new Date(e.start_time))} {e.title}</span>
+                      <span className="flex-shrink-0 text-[10px]">{typeIcon}</span>
+                      {e.is_recurring && <span className="flex-shrink-0 opacity-80 text-[8px]">↻</span>}
+                      <span className="truncate font-medium">{formatTime(new Date(e.start_time))} {e.title}</span>
                     </button>
                   );
                 })}

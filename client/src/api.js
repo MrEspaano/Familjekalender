@@ -19,6 +19,8 @@ function normalizeForDB(data) {
     end_time: data.end_time || null,
     location: data.location?.trim() || null,
     notes: data.notes?.trim() || null,
+    type: data.type || 'event',
+    metadata: data.metadata || {},
     recurrence: data.recurrence || null,
     recurrence_end: data.recurrence_end || null,
   };

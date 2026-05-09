@@ -33,6 +33,8 @@ export function expandEvents(rows, fromDate, toDate) {
           end_time: instanceEnd ? instanceEnd.toISOString() : null,
           is_recurring: true,
           occurrence_date: dateStr,
+          type: event.type || 'event',
+          metadata: event.metadata || {},
         });
         count++;
       }
